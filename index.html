@@ -99,6 +99,15 @@
   summary{cursor:pointer;font-weight:700}
   details p{color:var(--soft);margin-top:10px}
 
+  .ios{display:none;margin:0 20px 10px;padding:14px 18px;border-radius:16px;
+    background:rgba(142,45,226,.18);border:1px solid rgba(142,45,226,.6);color:var(--text);font-size:15px}
+  .ios a{font-weight:700}
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+  .price div{background:rgba(7,11,16,.45);border:1px solid var(--border);border-radius:14px;padding:10px;text-align:center}
+  .price b{display:block;font-size:18px}
+  .price span{color:var(--soft);font-size:12px}
+  .btn-wa{background:#25D366;color:#04121A}
+
   footer.wrap{padding:40px 20px 60px;color:var(--soft);font-size:13px;text-align:center;border-top:1px solid var(--border);margin-top:40px}
   footer p{margin:6px 0}
 
@@ -118,6 +127,8 @@
 </header>
 
 <main>
+  <div class="wrap"><p class="ios" id="ios">📱 Vous êtes sur iPhone : BCL Downloader fonctionne uniquement sur <strong>Android</strong>.
+    Vous pouvez quand même <a href="#offrir">offrir Premium à un proche</a> qui a un téléphone Android.</p></div>
   <div class="wrap hero">
     <div>
       <span class="tag">Android • Gratuit • Version 1.1</span>
@@ -183,8 +194,26 @@
       <div class="plan pro">
         <h3>✦ Premium</h3>
         <ul><li>Vidéos 1080p et 4K</li><li>Doublage vocal</li><li>Téléchargements illimités</li><li>Sans publicité</li></ul>
-        <p class="small">Paiement par MonCash, NatCash ou PayPal, directement dans l'application.</p>
+        <div class="price">
+          <div><span>Semaine</span><b>$1.99</b><span>290 G</span></div>
+          <div><span>Mois</span><b>$4.99</b><span>725 G</span></div>
+          <div><span>Année</span><b>$39.99</b><span>5800 G</span></div>
+        </div>
+        <p class="small">Paiement par MonCash, NatCash ou PayPal, directement dans l'application (onglet Premium).</p>
       </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="offrir">
+    <h2>Offrir Premium à un proche</h2>
+    <p class="sub">Depuis l'étranger ou depuis un iPhone, vous pouvez payer Premium pour quelqu'un qui a un téléphone Android.</p>
+    <div class="steps">
+      <div class="step"><p>Demandez à votre proche d'ouvrir BCL, l'onglet <strong>Premium</strong>, et de vous envoyer son <strong>ID appareil</strong> (exemple : <strong>C6A9-DEFC</strong>).</p></div>
+      <div class="step"><p>Payez le montant de la formule choisie par <strong>NatCash</strong>, <strong>MonCash</strong> ou <strong>PayPal</strong>. Avec NatCash, écrivez l'ID appareil dans le champ <strong>Contenu</strong>.</p></div>
+      <div class="step"><p>Écrivez-nous sur WhatsApp avec l'ID appareil et la formule : nous activons Premium sur le téléphone de votre proche.</p></div>
+    </div>
+    <div class="actions" style="margin-top:18px">
+      <a class="btn btn-wa" href="https://wa.me/50937434374?text=Bonjour%2C%20je%20veux%20offrir%20BCL%20Premium.%20ID%20appareil%20%3A%20" target="_blank" rel="noopener">💬 Offrir Premium via WhatsApp</a>
     </div>
   </section>
 
@@ -204,6 +233,8 @@
     <h2>Questions fréquentes</h2>
     <details><summary>Pourquoi BCL Downloader n'est pas sur le Play Store ?</summary>
       <p>Les applications de téléchargement de vidéos ne sont pas acceptées sur Google Play. BCL est distribué directement sur ce site, comme d'autres applications du même type.</p></details>
+    <details><summary>BCL Downloader fonctionne-t-il sur iPhone ?</summary>
+      <p>Non, BCL est disponible uniquement sur Android. Apple n'accepte pas les applications de téléchargement de vidéos sur l'App Store. Depuis un iPhone, vous pouvez quand même <a href="#offrir">offrir Premium à un proche</a> qui a un Android.</p></details>
     <details><summary>L'application est-elle sûre ?</summary>
       <p>Téléchargez-la uniquement depuis ce site. L'APK officiel est signé par BCL : un fichier modifié ne pourra pas remplacer la version installée.</p></details>
     <details><summary>Comment recevoir les mises à jour ?</summary>
@@ -219,5 +250,11 @@
   <p>© 2026 BCL</p>
 </footer>
 
+<script>
+  // Affiche le message seulement sur iPhone / iPad
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIOS) { document.getElementById("ios").style.display = "block"; }
+</script>
 </body>
 </html>
